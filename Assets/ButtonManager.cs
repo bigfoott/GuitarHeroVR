@@ -10,6 +10,7 @@ public class ButtonManager : MonoBehaviour
     public Transform yellowButton;
     public Transform blueButton;
     public Transform orangeButton;
+    public Transform strumBar;
 
     string[] name = { "Green", "Red", "Yellow", "Blue", "Orange" };
     Transform[] transforms;
@@ -33,6 +34,22 @@ public class ButtonManager : MonoBehaviour
                 if (transforms[i].localPosition.y != 0)
                     transforms[i].localPosition = new Vector3(transforms[i].localPosition.x, 0, transforms[i].localPosition.z);
             }
+        }
+
+        if (Input.GetButton("strumUp"))
+        {
+            if (strumBar.localEulerAngles.x != -30)
+                strumBar.localEulerAngles = new Vector3(-30, strumBar.localEulerAngles.y, strumBar.localEulerAngles.z);
+        }
+        else if (Input.GetButton("strumDown"))
+        {
+            if (strumBar.localEulerAngles.x != 30)
+                strumBar.localEulerAngles = new Vector3(30, strumBar.localEulerAngles.y, strumBar.localEulerAngles.z);
+        }
+        else
+        {
+            if (strumBar.localEulerAngles.x != 0)
+                strumBar.localEulerAngles = new Vector3(0, strumBar.localEulerAngles.y, strumBar.localEulerAngles.z);
         }
     }
 }
